@@ -1,0 +1,9 @@
+/* Smartphone Portrait Orientation - Less Than 768px Wide */
+
+@media only screen and (min-width: 768px) {
+  /* Tablet Portrait Orientation - 768px Wide or More */
+}
+
+@media only screen and (min-width: 1280px) {
+  /* Laptop and Desktop - 1280px Wide or More */
+}
