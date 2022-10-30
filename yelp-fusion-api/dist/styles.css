@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+}
+
+.eatery {
+  color: #eee;
+  border: 1px solid #000;
+}
+
+.header {
+  padding: 1rem;
+}
+
+.name,
+.categories {
+  letter-spacing: 1px;
+}
+
+.name {
+  font-size: 1.2rem;
+}
+
+.categories {
+  font-size: 0.8rem;
+  margin: 1rem 0 0;
+}
+
+.expand {
+  font-size: 1.5rem;
+}
+
+.name:hover,
+.expand:hover {
+  cursor: pointer;
+}
+
+.name:hover {
+  text-decoration: underline;
+}

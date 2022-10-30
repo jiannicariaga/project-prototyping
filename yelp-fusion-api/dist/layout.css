@@ -1,0 +1,20 @@
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col-100 {
+  flex-basis: 100%;
+}
+
+.col-90 {
+  flex-basis: 90%;
+}
+
+.col-10 {
+  flex-basis: 10%;
+}
+
+.text-right {
+  text-align: right;
+}
