@@ -6,7 +6,9 @@ export default class SearchForm extends React.Component {
     this.state = {
       term: '',
       location: '',
-      locationInputActive: false
+      locationInputActive: false,
+      geolocation: null,
+      formMessage: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,12 +18,24 @@ export default class SearchForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ formMessage: null });
+    // eslint-disable-next-line no-console
+    console.log(this.state);
   }
 
   handleChange(event) {
-    event.target.className === 'term-input'
-      ? this.setState({ term: event.target.value })
-      : this.setState({ location: event.target.value });
+    if (event.target.className.includes('term-input')) {
+      this.setState({ term: event.target.value });
+    }
+    if (event.target.className.includes('location-input')) {
+      if (this.state.geolocation) {
+        this.setState({
+          geolocation: null,
+          formMessage: 'Geolocation removed.'
+        });
+      }
+      this.setState({ location: event.target.value });
+    }
   }
 
   handleFocus(event) {
@@ -29,11 +43,22 @@ export default class SearchForm extends React.Component {
   }
 
   getLocation(event) {
-
+    if (!navigator.geolocation) {
+      this.setState = ({ formMessage: 'Geolocation is not supported.' });
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      this.setState({
+        location: 'Current Location',
+        geolocation: { lat: latitude, lng: longitude },
+        formMessage: 'Geolocation added.'
+      });
+    });
   }
 
   render() {
-    const active = this.state.locationInputActive ? 'active' : '';
+    const active = this.state.locationInputActive ? ' active' : '';
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -50,7 +75,7 @@ export default class SearchForm extends React.Component {
             required
             type="text"
             placeholder="City, State, or Zip Code"
-            className={`location-input ${active}`}
+            className={`location-input${active}`}
             onFocus={this.handleFocus}
             onBlur={this.handleFocus}
             onChange={this.handleChange}
@@ -62,6 +87,7 @@ export default class SearchForm extends React.Component {
           </div>
         </div>
         <button type='submit'>Search</button>
+        <span>{this.state.formMessage}</span>
       </form>
     );
   }
