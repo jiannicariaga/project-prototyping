@@ -14,10 +14,29 @@ form {
 input,
 button {
   font-family: sans-serif;
+  margin-top: 0.25rem;
+}
+
+button {
+  padding: 0.25rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input,
+p {
+  font-size: 1rem;
+  padding: 0.25rem 0 0.25rem 0.25rem;
 }
 
 p {
-  margin: 0.2rem 0;
+  margin: 0;
+}
+
+span {
+  margin-left: 0.25rem;
 }
 
 .term-input,
