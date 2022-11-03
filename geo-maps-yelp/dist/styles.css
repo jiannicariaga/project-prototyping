@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+form {
+  width: 250px;
+}
+
+input,
+button {
+  font-family: sans-serif;
+}
+
+p {
+  margin: 0.2rem 0;
+}
+
+.term-input,
+.location-input,
+.location-suggestion {
+  width: 100%;
+}
+
+.location-suggestion {
+  position: absolute;
+  width: 250px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.location-suggestion:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.location-input + .location-suggestion {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.location-input.active + .location-suggestion {
+  max-height: 100px;
+  transition: max-height 0.3s ease-in;
+}
