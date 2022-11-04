@@ -21,6 +21,10 @@ export default class SearchForm extends React.Component {
     this.setState({ formMessage: null });
     // eslint-disable-next-line no-console
     console.log(this.state);
+
+    // Check location and geolocation values
+    // Call (parent) method and pass in appropriate term and location
+    this.props.requestData();
   }
 
   handleChange(event) {
@@ -60,35 +64,37 @@ export default class SearchForm extends React.Component {
   render() {
     const active = this.state.locationInputActive ? ' active' : '';
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <input
-            required
-            type="text"
-            placeholder="Tacos, Japanese, etc."
-            className='term-input'
-            onChange={this.handleChange}
-            value={this.state.term} />
-        </div>
-        <div>
-          <input
-            required
-            type="text"
-            placeholder="City, State, or Zip Code"
-            className={`location-input${active}`}
-            onFocus={this.handleFocus}
-            onBlur={this.handleFocus}
-            onChange={this.handleChange}
-            value={this.state.location} />
-          <div
-            className='location-suggestion'
-            onClick={this.getLocation} >
-            <p>Current Location &#40;Recommended&#41;</p>
+      <section>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input
+              required
+              type="text"
+              placeholder="Tacos, Japanese, etc."
+              className='term-input'
+              onChange={this.handleChange}
+              value={this.state.term} />
           </div>
-        </div>
-        <button type='submit'>Search</button>
-        <span>{this.state.formMessage}</span>
-      </form>
+          <div>
+            <input
+              required
+              type="text"
+              placeholder="City, State, or Zip Code"
+              className={`location-input${active}`}
+              onFocus={this.handleFocus}
+              onBlur={this.handleFocus}
+              onChange={this.handleChange}
+              value={this.state.location} />
+            <div
+              className='location-suggestion'
+              onClick={this.getLocation} >
+              <p>Current Location &#40;Recommended&#41;</p>
+            </div>
+          </div>
+          <button type='submit'>Search</button>
+          <span>{this.state.formMessage}</span>
+        </form>
+      </section>
     );
   }
 }
