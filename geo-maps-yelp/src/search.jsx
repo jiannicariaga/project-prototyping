@@ -11,14 +11,16 @@ export default class Search extends React.Component {
     this.requestData = this.requestData.bind(this);
   }
 
-  requestData() {
-    // eslint-disable-next-line no-console
-    console.log('woo!');
+  requestData(formInputs) {
+    // Format request URL
+    // Fetch data from Yelp API
+    // Save result.businesses in this.state.results
   }
 
   render() {
     return (
       <>
+        {/* <Map /> */}
         <SearchForm requestData={this.requestData}/>
         <SearchResults results={this.state.results} />
       </>

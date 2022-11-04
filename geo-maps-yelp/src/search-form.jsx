@@ -18,13 +18,11 @@ export default class SearchForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { term, location, geolocation } = this.state;
+    !this.state.geolocation
+      ? this.props.requestData({ term, location })
+      : this.props.requestData({ term, geolocation });
     this.setState({ formMessage: null });
-    // eslint-disable-next-line no-console
-    console.log(this.state);
-
-    // Check location and geolocation values
-    // Call (parent) method and pass in appropriate term and location
-    this.props.requestData();
   }
 
   handleChange(event) {
@@ -55,7 +53,7 @@ export default class SearchForm extends React.Component {
       const { latitude, longitude } = position.coords;
       this.setState({
         location: 'Current Location',
-        geolocation: { lat: latitude, lng: longitude },
+        geolocation: { latitude, longitude },
         formMessage: 'Geolocation added.'
       });
     });
@@ -78,8 +76,8 @@ export default class SearchForm extends React.Component {
           <div>
             <input
               required
-              type="text"
-              placeholder="City, State, or Zip Code"
+              type='text'
+              placeholder='City, State, or Zip Code'
               className={`location-input${active}`}
               onFocus={this.handleFocus}
               onBlur={this.handleFocus}
