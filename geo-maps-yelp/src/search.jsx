@@ -12,9 +12,17 @@ export default class Search extends React.Component {
   }
 
   requestData(formInputs) {
-    // Format request URL
-    // Fetch data from Yelp API
-    // Save result.businesses in this.state.results
+    // REPLACE BELOW WITH FETCH TO SERVER
+
+    // const proxyUrl = '';
+    // const encodedUrl = encodeURIComponent('');
+    // const apiKey = '';
+
+    // const headers = { headers: { Authorization: `Bearer ${apiKey}` } };
+    // fetch(`${proxyUrl}${encodedUrl}`, headers)
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ results: data.businesses }))
+    //   .catch(err => console.error(err));
   }
 
   render() {

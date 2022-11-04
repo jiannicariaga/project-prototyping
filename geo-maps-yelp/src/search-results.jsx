@@ -2,10 +2,14 @@ import React from 'react';
 
 export default class SearchResults extends React.Component {
   render() {
-    // Get search results passed in from this.props.results using .map()
+    const results = this.props.results.map(result => {
+      return (
+        {/* Add React elements for a result */}
+      );
+    });
     return (
       <section>
-        {/* Return of rendered search results */}
+        {results}
       </section>
     );
   }
