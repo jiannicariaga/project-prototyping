@@ -19,9 +19,7 @@ export default class Search extends React.Component {
     };
     fetch('/api/search', body)
       .then(response => response.json())
-      .then(data => {
-        // this.setState({ results: newResults });
-      })
+      .then(data => this.setState({ results: data.businesses }))
       .catch(err => console.error(err));
   }
 

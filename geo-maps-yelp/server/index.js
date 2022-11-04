@@ -15,7 +15,7 @@ app.post('/api/search?', (req, res, next) => {
     throw new ClientError(400, 'term and location are required fields');
   }
   const { term, location, geolocation } = req.body;
-  let query = `term=${term}`;
+  let query = `catergory=food&term=${term}`;
   query += geolocation
     ? `&latitude=${geolocation.latitude}&longitude=${geolocation.longitude}`
     : `&location=${location}`;
