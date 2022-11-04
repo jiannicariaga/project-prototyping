@@ -1,6 +1,15 @@
+const webpack = require('webpack');
+const path = require('path');
+const clientPath = path.join(__dirname, 'client');
+const serverPublicPath = path.join(__dirname, 'server', 'public');
+
 module.exports = {
+  entry: [clientPath],
   resolve: {
     extensions: ['.js', '.jsx']
+  },
+  output: {
+    path: serverPublicPath
   },
   module: {
     rules: [
@@ -10,9 +19,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: [
-              '@babel/plugin-transform-react-jsx'
-            ]
+            plugins: ['@babel/plugin-transform-react-jsx']
           }
         }
       }
@@ -20,5 +27,8 @@ module.exports = {
   },
   performance: {
     hints: false
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin([])
+  ].filter(Boolean)
 };
