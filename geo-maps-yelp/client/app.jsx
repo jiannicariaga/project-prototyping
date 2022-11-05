@@ -1,17 +1,8 @@
 import React from 'react';
-import Search from './components/search';
+import Search from './pages/search';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
-    return (
-      <>
-        <Search />
-      </>
-    );
+    return <Search />;
   }
 }
