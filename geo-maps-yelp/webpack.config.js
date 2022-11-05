@@ -1,3 +1,4 @@
+require('dotenv/config');
 const webpack = require('webpack');
 const path = require('path');
 const clientPath = path.join(__dirname, 'client');
@@ -29,6 +30,6 @@ module.exports = {
     hints: false
   },
   plugins: [
-    new webpack.EnvironmentPlugin([])
+    new webpack.EnvironmentPlugin(['MAPS_API_KEY'])
   ].filter(Boolean)
 };
