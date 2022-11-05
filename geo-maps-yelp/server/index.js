@@ -10,7 +10,7 @@ app.use(staticMiddleware);
 
 app.use(express.json());
 
-app.post('/api/search?', (req, res, next) => {
+app.post('/api/search', (req, res, next) => {
   if (!req.body) {
     throw new ClientError(400, 'term and location are required fields');
   }
@@ -20,7 +20,7 @@ app.post('/api/search?', (req, res, next) => {
     ? `&latitude=${geolocation.latitude}&longitude=${geolocation.longitude}`
     : `&location=${location}`;
   const headers = {
-    headers: { Authorization: `Bearer ${process.env.API_KEY}` }
+    headers: { Authorization: `Bearer ${process.env.YELP_API_KEY}` }
   };
   fetch(`https://api.yelp.com/v3/businesses/search?${query}`, headers)
     .then(yelpRes => yelpRes.json())

@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from './map';
 import SearchForm from './search-form';
 import SearchResults from './search-results';
 
@@ -26,7 +27,7 @@ export default class Search extends React.Component {
   render() {
     return (
       <>
-        {/* <Map /> */}
+        <Map />
         <SearchForm requestData={this.requestData}/>
         <SearchResults results={this.state.results} />
       </>
